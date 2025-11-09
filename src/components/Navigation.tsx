@@ -9,12 +9,14 @@ import {
   UserIcon,
   CalendarIcon,
   BookOpenIcon,
-  ChartBarIcon
+  ChartBarIcon,
+  PhotoIcon
 } from '@heroicons/react/24/outline';
 
 const navigation = [
   { name: 'Accueil', href: '/', icon: HomeIcon },
   { name: 'Tableau de bord', href: '/dashboard', icon: ChartBarIcon, protected: true },
+  { name: 'Portfolio', href: '/portfolio', icon: PhotoIcon, protected: true },
   { name: 'Matching', href: '/matching', icon: UserGroupIcon, protected: true },
   { name: 'Mentorat', href: '/mentorship', icon: CalendarIcon, protected: true },
   { name: 'Ressources', href: '/resources', icon: BookOpenIcon },

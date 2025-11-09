@@ -39,3 +39,37 @@ export const connections = pgTable('connections', {
   status: text('status').notNull(), // 'pending', 'accepted'
   createdAt: timestamp('created_at').defaultNow(),
 });
+
+export const projects = pgTable('projects', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id').references(() => users.id),
+  title: text('title').notNull(),
+  description: text('description'),
+  genre: text('genre'),
+  duration: integer('duration'), // in minutes
+  productionYear: integer('production_year'),
+  status: text('status').notNull(), // 'completed', 'in_progress', 'planned'
+  videoUrl: text('video_url'),
+  thumbnailUrl: text('thumbnail_url'),
+  views: integer('views').default(0),
+  likes: integer('likes').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const projectMedia = pgTable('project_media', {
+  id: serial('id').primaryKey(),
+  projectId: integer('project_id').references(() => projects.id),
+  type: text('type').notNull(), // 'image', 'video', 'document'
+  url: text('url').notNull(),
+  title: text('title'),
+  description: text('description'),
+  order: integer('order').default(0),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const projectLikes = pgTable('project_likes', {
+  id: serial('id').primaryKey(),
+  projectId: integer('project_id').references(() => projects.id),
+  userId: integer('user_id').references(() => users.id),
+  createdAt: timestamp('created_at').defaultNow(),
+});
