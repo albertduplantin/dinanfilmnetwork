@@ -73,3 +73,37 @@ export const projectLikes = pgTable('project_likes', {
   userId: integer('user_id').references(() => users.id),
   createdAt: timestamp('created_at').defaultNow(),
 });
+
+export const teamProjects = pgTable('team_projects', {
+  id: serial('id').primaryKey(),
+  creatorId: integer('creator_id').references(() => users.id),
+  title: text('title').notNull(),
+  description: text('description'),
+  genre: text('genre'),
+  projectType: text('project_type').notNull(), // 'court_metrage', 'long_metrage', 'serie', 'documentaire'
+  status: text('status').notNull(), // 'recruiting', 'in_progress', 'completed', 'cancelled'
+  budget: integer('budget'),
+  deadline: timestamp('deadline'),
+  location: text('location'),
+  requiredRoles: text('required_roles').array(), // array of role names
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const teamApplications = pgTable('team_applications', {
+  id: serial('id').primaryKey(),
+  projectId: integer('project_id').references(() => teamProjects.id),
+  applicantId: integer('applicant_id').references(() => users.id),
+  appliedRole: text('applied_role').notNull(),
+  message: text('message'),
+  status: text('status').notNull(), // 'pending', 'accepted', 'rejected'
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const userSkills = pgTable('user_skills', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id').references(() => users.id),
+  skill: text('skill').notNull(),
+  level: text('level').notNull(), // 'beginner', 'intermediate', 'expert'
+  experience: integer('experience'), // years of experience
+  createdAt: timestamp('created_at').defaultNow(),
+});

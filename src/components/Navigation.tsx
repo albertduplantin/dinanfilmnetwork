@@ -17,6 +17,7 @@ const navigation = [
   { name: 'Accueil', href: '/', icon: HomeIcon },
   { name: 'Tableau de bord', href: '/dashboard', icon: ChartBarIcon, protected: true },
   { name: 'Portfolio', href: '/portfolio', icon: PhotoIcon, protected: true },
+  { name: 'Équipes', href: '/teams', icon: UserGroupIcon, protected: true },
   { name: 'Matching', href: '/matching', icon: UserGroupIcon, protected: true },
   { name: 'Mentorat', href: '/mentorship', icon: CalendarIcon, protected: true },
   { name: 'Ressources', href: '/resources', icon: BookOpenIcon },
