@@ -107,3 +107,49 @@ export const userSkills = pgTable('user_skills', {
   experience: integer('experience'), // years of experience
   createdAt: timestamp('created_at').defaultNow(),
 });
+
+export const externalIntegrations = pgTable('external_integrations', {
+  id: serial('id').primaryKey(),
+  name: text('name').notNull(), // 'CNC', 'Festival de Cannes', etc.
+  type: text('type').notNull(), // 'funding', 'festival', 'network'
+  apiEndpoint: text('api_endpoint'),
+  apiKey: text('api_key'),
+  isActive: boolean('is_active').default(true),
+  lastSync: timestamp('last_sync'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const fundingOpportunities = pgTable('funding_opportunities', {
+  id: serial('id').primaryKey(),
+  externalId: text('external_id'), // ID from external API
+  integrationId: integer('integration_id').references(() => externalIntegrations.id),
+  title: text('title').notNull(),
+  description: text('description'),
+  organization: text('organization'),
+  amount: integer('amount'),
+  deadline: timestamp('deadline'),
+  eligibility: text('eligibility'),
+  applicationUrl: text('application_url'),
+  category: text('category'), // 'film', 'short_film', 'documentary', etc.
+  region: text('region'), // 'france', 'bretagne', 'europe', etc.
+  isActive: boolean('is_active').default(true),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const festivalEvents = pgTable('festival_events', {
+  id: serial('id').primaryKey(),
+  externalId: text('external_id'),
+  integrationId: integer('integration_id').references(() => externalIntegrations.id),
+  name: text('name').notNull(),
+  description: text('description'),
+  startDate: timestamp('start_date'),
+  endDate: timestamp('end_date'),
+  location: text('location'),
+  submissionDeadline: timestamp('submission_deadline'),
+  submissionUrl: text('submission_url'),
+  categories: text('categories').array(), // ['court_metrage', 'documentaire', etc.]
+  entryFee: integer('entry_fee'),
+  prizes: text('prizes'),
+  isActive: boolean('is_active').default(true),
+  createdAt: timestamp('created_at').defaultNow(),
+});
