@@ -122,6 +122,9 @@ export default function Integrations() {
             <option value="all">Toutes les régions</option>
             <option value="france">France</option>
             <option value="bretagne">Bretagne</option>
+            <option value="belgium">Belgique</option>
+            <option value="switzerland">Suisse</option>
+            <option value="canada">Canada</option>
             <option value="europe">Europe</option>
             <option value="international">International</option>
           </select>
