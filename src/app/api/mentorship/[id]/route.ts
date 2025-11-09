@@ -6,7 +6,7 @@ import { eq } from 'drizzle-orm';
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const clerkUser = await currentUser();
@@ -14,7 +14,8 @@ export async function PUT(
       return NextResponse.json({ error: 'Non autorisé' }, { status: 401 });
     }
 
-    const sessionId = parseInt(params.id);
+    const resolvedParams = await params;
+    const sessionId = parseInt(resolvedParams.id);
     const body = await request.json();
     const { status } = body;
 
