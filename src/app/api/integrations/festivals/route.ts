@@ -22,7 +22,7 @@ export async function GET() {
 export async function POST() {
   try {
     const testEvents = [
-      // France
+      // France - Festivals actifs 2025
       {
         externalId: 'festival-cannes-2025',
         name: 'Festival de Cannes',
@@ -30,8 +30,8 @@ export async function POST() {
         startDate: new Date('2025-05-14'),
         endDate: new Date('2025-05-25'),
         location: 'Cannes, France',
-        submissionDeadline: new Date('2025-01-15'),
-        submissionUrl: 'https://www.festival-cannes.com/en/submit-your-film/short-film/',
+        submissionDeadline: new Date('2025-03-15'),
+        submissionUrl: 'https://www.festival-cannes.com/',
         categories: ['court_metrage'],
         entryFee: 80,
         prizes: 'Palme d\'Or du court métrage, Prix du Jury, Prix de la Jeunesse',
@@ -45,7 +45,7 @@ export async function POST() {
         endDate: new Date('2025-04-13'),
         location: 'Dinan, France',
         submissionDeadline: new Date('2025-02-28'),
-        submissionUrl: 'https://www.festival-film-court-dinan.com/soumission',
+        submissionUrl: 'https://www.festival-film-court-dinan.com/',
         categories: ['court_metrage', 'documentaire', 'animation'],
         entryFee: 15,
         prizes: 'Prix du Public, Prix du Jury, Prix Jeune Talent',
@@ -58,8 +58,8 @@ export async function POST() {
         startDate: new Date('2025-01-31'),
         endDate: new Date('2025-02-08'),
         location: 'Clermont-Ferrand, France',
-        submissionDeadline: new Date('2024-10-15'),
-        submissionUrl: 'https://www.clermont-filmfest.org/soumission',
+        submissionDeadline: new Date('2024-11-15'),
+        submissionUrl: 'https://www.clermont-filmfest.org/',
         categories: ['court_metrage', 'animation'],
         entryFee: 25,
         prizes: 'Prix International, Prix National, Prix Jeune Public',
@@ -73,28 +73,14 @@ export async function POST() {
         endDate: new Date('2025-06-14'),
         location: 'Annecy, France',
         submissionDeadline: new Date('2025-02-15'),
-        submissionUrl: 'https://www.annecy.org/submission',
+        submissionUrl: 'https://www.annecy.org/',
         categories: ['animation'],
         entryFee: 35,
         prizes: 'Cristal du court métrage, Prix du Jury, Prix du Public',
         isActive: true,
       },
-      {
-        externalId: 'festival-lokkeberg-2025',
-        name: 'Festival International du Court Métrage de Lokkeberg',
-        description: 'Festival belge dédié aux courts métrages européens.',
-        startDate: new Date('2025-03-15'),
-        endDate: new Date('2025-03-22'),
-        location: 'Lokeren, Belgique',
-        submissionDeadline: new Date('2024-12-15'),
-        submissionUrl: 'https://www.lokkebergfestival.be/',
-        categories: ['court_metrage'],
-        entryFee: 20,
-        prizes: 'Prix du Public, Prix du Jury International',
-        isActive: true,
-      },
 
-      // Belgique
+      // Belgique - Festivals actifs
       {
         externalId: 'festival-namur-2025',
         name: 'Festival International du Film Francophone de Namur',
@@ -124,7 +110,7 @@ export async function POST() {
         isActive: true,
       },
 
-      // Suisse
+      // Suisse - Festivals actifs
       {
         externalId: 'festival-fribourg-2025',
         name: 'Festival International du Film de Fribourg',
@@ -154,7 +140,7 @@ export async function POST() {
         isActive: true,
       },
 
-      // Canada (Québec)
+      // Canada (Québec) - Festivals actifs
       {
         externalId: 'festival-regard-2025',
         name: 'Festival Regard - Saguenay',
@@ -184,7 +170,7 @@ export async function POST() {
         isActive: true,
       },
 
-      // Europe
+      // Europe - Festivals majeurs
       {
         externalId: 'berlin-international-2025',
         name: 'Berlinale - Forum Expanded',
@@ -193,7 +179,7 @@ export async function POST() {
         endDate: new Date('2025-02-23'),
         location: 'Berlin, Allemagne',
         submissionDeadline: new Date('2024-11-30'),
-        submissionUrl: 'https://www.berlinale.de/en/submission/forum-expanded.html',
+        submissionUrl: 'https://www.berlinale.de/',
         categories: ['court_metrage', 'experimental'],
         entryFee: 50,
         prizes: 'Prix du Forum Expanded, Prix du Jury',
@@ -206,7 +192,7 @@ export async function POST() {
         startDate: new Date('2025-01-22'),
         endDate: new Date('2025-02-02'),
         location: 'Rotterdam, Pays-Bas',
-        submissionDeadline: new Date('2024-10-15'),
+        submissionDeadline: new Date('2024-11-15'),
         submissionUrl: 'https://www.iffr.com/',
         categories: ['court_metrage', 'documentaire', 'experimental'],
         entryFee: 40,
@@ -214,7 +200,7 @@ export async function POST() {
         isActive: true,
       },
 
-      // Afrique francophone
+      // Afrique francophone - Festivals majeurs
       {
         externalId: 'fescao-2025',
         name: 'Festival du Film Africain d\'Ouagadougou - FESPACO',
@@ -222,7 +208,7 @@ export async function POST() {
         startDate: new Date('2025-02-22'),
         endDate: new Date('2025-03-01'),
         location: 'Ouagadougou, Burkina Faso',
-        submissionDeadline: new Date('2024-11-30'),
+        submissionDeadline: new Date('2024-12-15'),
         submissionUrl: 'https://www.fespaco.bf/',
         categories: ['court_metrage', 'long_metrage', 'documentaire'],
         entryFee: 50,
