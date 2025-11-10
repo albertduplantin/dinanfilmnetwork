@@ -11,7 +11,8 @@ import {
   BookOpenIcon,
   ChartBarIcon,
   PhotoIcon,
-  GlobeAltIcon
+  GlobeAltIcon,
+  TruckIcon
 } from '@heroicons/react/24/outline';
 
 const navigation = [
@@ -21,6 +22,7 @@ const navigation = [
   { name: 'Équipes', href: '/teams', icon: UserGroupIcon, protected: true },
   { name: 'Matching', href: '/matching', icon: UserGroupIcon, protected: true },
   { name: 'Mentorat', href: '/mentorship', icon: CalendarIcon, protected: true },
+  { name: 'Marketplace', href: '/marketplace', icon: TruckIcon },
   { name: 'Intégrations', href: '/integrations', icon: GlobeAltIcon },
   { name: 'Ressources', href: '/resources', icon: BookOpenIcon },
   { name: 'Profil', href: '/profile', icon: UserIcon, protected: true },

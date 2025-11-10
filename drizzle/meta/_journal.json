@@ -29,6 +29,13 @@
       "when": 1762727358432,
       "tag": "0003_aromatic_tusk",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1762776435621,
+      "tag": "0004_fat_pandemic",
+      "breakpoints": true
     }
   ]
 }

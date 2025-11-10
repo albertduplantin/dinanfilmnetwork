@@ -153,3 +153,81 @@ export const festivalEvents = pgTable('festival_events', {
   isActive: boolean('is_active').default(true),
   createdAt: timestamp('created_at').defaultNow(),
 });
+
+export const marketplaceListings = pgTable('marketplace_listings', {
+  id: serial('id').primaryKey(),
+  sellerId: integer('seller_id').references(() => users.id),
+  title: text('title').notNull(),
+  description: text('description').notNull(),
+  category: text('category').notNull(), // 'equipment', 'service', 'location', 'other'
+  subcategory: text('subcategory'), // 'camera', 'lighting', 'sound', 'editing', etc.
+  price: integer('price'), // in cents, null for services
+  priceType: text('price_type').notNull(), // 'fixed', 'hourly', 'daily', 'negotiation'
+  location: text('location'),
+  availability: text('availability'), // 'immediate', 'scheduled', 'on_request'
+  condition: text('condition'), // 'new', 'excellent', 'good', 'fair' (for equipment)
+  images: text('images').array(), // array of image URLs
+  contactMethod: text('contact_method').notNull(), // 'platform', 'email', 'phone'
+  isActive: boolean('is_active').default(true),
+  featured: boolean('featured').default(false),
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const marketplaceInquiries = pgTable('marketplace_inquiries', {
+  id: serial('id').primaryKey(),
+  listingId: integer('listing_id').references(() => marketplaceListings.id),
+  buyerId: integer('buyer_id').references(() => users.id),
+  message: text('message').notNull(),
+  status: text('status').notNull(), // 'pending', 'responded', 'accepted', 'rejected'
+  createdAt: timestamp('created_at').defaultNow(),
+  updatedAt: timestamp('updated_at').defaultNow(),
+});
+
+export const userAnalytics = pgTable('user_analytics', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id').references(() => users.id),
+  metricType: text('metric_type').notNull(), // 'profile_views', 'project_views', 'connections', 'applications'
+  metricValue: integer('metric_value').notNull(),
+  period: text('period').notNull(), // 'daily', 'weekly', 'monthly'
+  date: timestamp('date').notNull(),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const userAchievements = pgTable('user_achievements', {
+  id: serial('id').primaryKey(),
+  userId: integer('user_id').references(() => users.id),
+  achievementType: text('achievement_type').notNull(), // 'first_project', 'mentor_sessions', 'festival_participation'
+  achievementName: text('achievement_name').notNull(),
+  achievementDescription: text('achievement_description'),
+  unlockedAt: timestamp('unlocked_at').defaultNow(),
+});
+
+export const discussionGroups = pgTable('discussion_groups', {
+  id: serial('id').primaryKey(),
+  name: text('name').notNull(),
+  description: text('description'),
+  category: text('category').notNull(), // 'general', 'technique', 'projets', 'evenements'
+  createdBy: integer('created_by').references(() => users.id),
+  isPrivate: boolean('is_private').default(false),
+  memberCount: integer('member_count').default(1),
+  createdAt: timestamp('created_at').defaultNow(),
+});
+
+export const groupMembers = pgTable('group_members', {
+  id: serial('id').primaryKey(),
+  groupId: integer('group_id').references(() => discussionGroups.id),
+  userId: integer('user_id').references(() => users.id),
+  role: text('role').notNull(), // 'admin', 'moderator', 'member'
+  joinedAt: timestamp('joined_at').defaultNow(),
+});
+
+export const groupMessages = pgTable('group_messages', {
+  id: serial('id').primaryKey(),
+  groupId: integer('group_id').references(() => discussionGroups.id),
+  userId: integer('user_id').references(() => users.id),
+  content: text('content').notNull(),
+  messageType: text('message_type').notNull(), // 'text', 'image', 'file'
+  attachmentUrl: text('attachment_url'),
+  createdAt: timestamp('created_at').defaultNow(),
+});
