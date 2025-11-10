@@ -22,6 +22,7 @@ const navigation = [
   { name: 'Équipes', href: '/teams', icon: UserGroupIcon, protected: true },
   { name: 'Matching', href: '/matching', icon: UserGroupIcon, protected: true },
   { name: 'Mentorat', href: '/mentorship', icon: CalendarIcon, protected: true },
+  { name: 'Groupes', href: '/groups', icon: UserGroupIcon },
   { name: 'Marketplace', href: '/marketplace', icon: TruckIcon },
   { name: 'Analytics', href: '/analytics', icon: ChartBarIcon, protected: true },
   { name: 'Intégrations', href: '/integrations', icon: GlobeAltIcon },
