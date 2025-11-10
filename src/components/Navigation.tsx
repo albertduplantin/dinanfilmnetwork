@@ -23,6 +23,7 @@ const navigation = [
   { name: 'Matching', href: '/matching', icon: UserGroupIcon, protected: true },
   { name: 'Mentorat', href: '/mentorship', icon: CalendarIcon, protected: true },
   { name: 'Marketplace', href: '/marketplace', icon: TruckIcon },
+  { name: 'Analytics', href: '/analytics', icon: ChartBarIcon, protected: true },
   { name: 'Intégrations', href: '/integrations', icon: GlobeAltIcon },
   { name: 'Ressources', href: '/resources', icon: BookOpenIcon },
   { name: 'Profil', href: '/profile', icon: UserIcon, protected: true },
